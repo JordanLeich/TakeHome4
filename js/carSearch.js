@@ -29,6 +29,7 @@ function filterCars() {
       (color.length === 0 || color.includes(car.color))
   );
 
+  // Display the filtered cars.
   displayCars(filteredCars);
 }
 
@@ -45,16 +46,22 @@ function displayCars(cars) {
     const carCard = document.createElement("div");
     carCard.classList.add("car-card");
     carCard.innerHTML = `
-            <h2>${car.make} ${car.model}</h2>
-            <p>Year: ${car.year}</p>
-            <p>Mileage: ${car.mileage} miles</p>
-            <p>Price: $${car.price}</p>
-            <p>Color: ${car.color}</p>
-            <p>Gas Mileage: ${car.gasMileage}</p>
-        `;
+      <h2>${car.make} ${car.model}</h2>
+      <p>Year: ${car.year}</p>
+      <p>Mileage: ${car.mileage} miles</p>
+      <p>Price: $${car.price}</p>
+      <p>Color: ${car.color}</p>
+      <p>Gas Mileage: ${car.gasMileage}</p>
+    `;
     carListings.appendChild(carCard);
   });
 }
 
+// Add this function to display all cars when the page loads.
+function displayAllCars() {
+  displayCars(usedCars);
+}
+
 filterButton.addEventListener("click", filterCars);
-filterCars(); // Initial filter
+
+displayAllCars();
